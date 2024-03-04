@@ -7,10 +7,10 @@ Last Updated: 1/9/2023
 
 -- SNOWFLAKE ADVANTAGE: Tasks (with Stream triggers)
 -- SNOWFLAKE ADVANTAGE: Task Observability
-
 USE ROLE HOL_ROLE;
 USE WAREHOUSE HOL_WH;
 USE SCHEMA HOL_DB.HARMONIZED;
+
 
 
 -- ----------------------------------------------------------------------------
@@ -59,8 +59,9 @@ SELECT *
 FROM TABLE(INFORMATION_SCHEMA.TASK_HISTORY(
     SCHEDULED_TIME_RANGE_START=>DATEADD('DAY',-1,CURRENT_TIMESTAMP()),
     RESULT_LIMIT => 100))
-ORDER BY SCHEDULED_TIME DESC
-;
+ORDER BY SCHEDULED_TIME DESC;
+
+
 
 -- Scheduled task runs
 SELECT
